@@ -9,6 +9,11 @@ class BigInt {
     
     public:
         friend bool operator==(const BigInt&, BigInt);
+        friend bool operator!=(const BigInt&, BigInt);
+        friend bool operator>=(const BigInt&, BigInt);
+        friend bool operator<=(const BigInt&, BigInt);
+        friend bool operator>(const BigInt&, BigInt);
+        friend bool operator<(const BigInt&, BigInt);
         friend istream& operator>>(istream&, BigInt&);
         friend ostream& operator<<(ostream&, BigInt&);
         friend BigInt operator+(const BigInt&, BigInt);
@@ -16,6 +21,31 @@ class BigInt {
 
 bool operator==(const BigInt& a, BigInt b) {
     if(a.digits == b.digits) return true;
+    else return false;
+}
+
+bool operator!=(const BigInt& a, BigInt b) {
+    if(a.digits != b.digits) return true;
+    else return false;
+}
+
+bool operator>=(const BigInt& a, BigInt b) {
+    if(a.digits >= b.digits) return true;
+    else return false;
+}
+
+bool operator<=(const BigInt& a, BigInt b) {
+    if(a.digits <= b.digits) return true;
+    else return false;
+}
+
+bool operator>(const BigInt& a, BigInt b) {
+    if(a.digits > b.digits) return true;
+    else return false;
+}
+
+bool operator<(const BigInt& a, BigInt b) {
+    if(a.digits < b.digits) return true;
     else return false;
 }
 

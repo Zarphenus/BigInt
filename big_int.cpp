@@ -20,33 +20,27 @@ class BigInt {
 };
 
 bool operator==(const BigInt& a, BigInt b) {
-    if(a.digits == b.digits) return true;
-    else return false;
+    return a.digits == b.digits;
 }
 
 bool operator!=(const BigInt& a, BigInt b) {
-    if(a.digits != b.digits) return true;
-    else return false;
+    return a.digits != b.digits;
 }
 
 bool operator>=(const BigInt& a, BigInt b) {
-    if(a.digits >= b.digits) return true;
-    else return false;
+    return a.digits >= b.digits;
 }
 
 bool operator<=(const BigInt& a, BigInt b) {
-    if(a.digits <= b.digits) return true;
-    else return false;
+    return a.digits <= b.digits;
 }
 
 bool operator>(const BigInt& a, BigInt b) {
-    if(a.digits > b.digits) return true;
-    else return false;
+    return a.digits > b.digits;
 }
 
 bool operator<(const BigInt& a, BigInt b) {
-    if(a.digits < b.digits) return true;
-    else return false;
+    return a.digits < b.digits;
 }
 
 istream& operator>>(istream& input, BigInt& a) {

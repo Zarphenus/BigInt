@@ -6,6 +6,7 @@ using namespace std;
 class BigInt {
     private:
         vector<int> digits;
+        bool isNegative;
     
     public:
         friend bool operator==(const BigInt&, BigInt);
@@ -43,12 +44,38 @@ bool operator<(const BigInt& a, BigInt b) {
     return a.digits < b.digits;
 }
 
+string trim(const string& str) {
+    size_t first = str.find_first_not_of(' ');
+
+    if(string::npos == first) return str;
+
+    size_t last = str.find_last_not_of(' ');
+
+    return str.substr(first, (last - first + 1));
+}
+
 istream& operator>>(istream& input, BigInt& a) {
     string value;
+    char signal;
 
     input >> value;
+    value = trim(value);
 
-    for(char& c : value) a.digits.insert(a.digits.begin(), c - '0');
+    signal = value.at(0);
+
+    if(signal == '-') {
+        a.isNegative = true;
+        value = value.substr(1);
+    } else if(signal == '+') {
+        a.isNegative = false;
+        value = value.substr(1);
+    } else {
+        a.isNegative = false;
+    }
+
+    for(char& c : value) {
+        a.digits.insert(a.digits.begin(), c - '0');
+    }
 
     return input;
 }
